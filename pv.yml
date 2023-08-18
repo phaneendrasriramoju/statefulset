@@ -21,5 +21,3 @@ spec:
   #   server: 172.17.0.2
   hostpath:
     path: "/mnt/data"
-
-...

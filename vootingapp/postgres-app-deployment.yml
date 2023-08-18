@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres-app-deployment
+  labels:
+    name: postgres-app
+    author: phani
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres-app
+  template:
+    metadata:
+      name: postgres-app-pod
+      labels:
+        app: postgres-app
+    spec:
+      containers:
+        - name: my-postgres-app
+          image: postgres
+          env:
+            - name: POSTGRES_PASSWORD
+              value: phani
+            - name: POSTGRES_USER
+              value: newuser
+            - name: POSTGRES_DB
+              value: newdb
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 80

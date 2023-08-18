@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ReplicationSet
+metadata:
+  name: tomcat-rs
+spec:
+  replicas: 3
+  selector:
+    app:
+  template:
+    metadata:
+      name: tomcat-pod
+      labels:
+        type: appserver
+    spec:
+      containers:
+        - name: mytomcat
+          image: tomee
+          ports:
+            - containerPort: 8080
+              hostPort: 9090
